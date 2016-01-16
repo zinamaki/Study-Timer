@@ -7,5 +7,5 @@ Project is still in Beta, expect to finish February 2016.
 
 Download and run the program: https://goo.gl/8rAXTR 
 
-made by Mina Zaki
+Made by Mina Zaki
 zakimina3@gmail.com
