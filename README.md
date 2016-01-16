@@ -2,7 +2,7 @@
 
 ### An open source desktop application for tracking your studying ##
 
-Study Timer tracks your study sessions with a session label and a duration. Your study history can be saved into a text file. 
+Study Timer tracks your study sessions with a session label and a duration. Your study history is saved into a text file. 
 
 Download and run the program: https://goo.gl/8rAXTR 
 
