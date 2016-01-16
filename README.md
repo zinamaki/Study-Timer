@@ -1,4 +1,4 @@
-# Study-Timer
+# Study Timer
 
 ### An open source desktop application for tracking your studying ##
 
