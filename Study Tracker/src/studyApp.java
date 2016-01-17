@@ -283,10 +283,6 @@ class TimerListener implements ActionListener {
 					// Specify the file name and path here
 					File file = new File("Study History.txt");
 
-					/*
-					 * This logic is to create the file if the file is not
-					 * already present
-					 */
 					if (!file.exists()) {
 						file.createNewFile();
 					}
