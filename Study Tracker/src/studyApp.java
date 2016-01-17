@@ -10,11 +10,14 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -56,6 +59,7 @@ class studyAppFrame extends JFrame implements ActionListener {
 	JButton start;
 	JButton stop;
 	JButton resume;
+	JButton motivation;
 	public static JLabel label;
 	public static Timer timer;
 	public static Font inputFont = new Font("Myriad Pro", Font.PLAIN, 32);
@@ -78,6 +82,11 @@ class studyAppFrame extends JFrame implements ActionListener {
 	Color textColor = new Color(193, 192, 191);
 	public static BufferedWriter output;
 
+	String[] motivational = { "https://www.youtube.com/watch?v=26U_seo0a1g",
+			"https://www.youtube.com/watch?v=7iaLQZ73ujQ", "https://www.youtube.com/watch?v=UX2tefQHNmk",
+			"https://www.youtube.com/watch?v=UNQhuFL6CWg", "https://www.youtube.com/watch?v=W_VQbtO3ChM",
+			"https://www.youtube.com/watch?v=AjZ0KbJcav0", "https://www.youtube.com/watch?v=wzhzkKccBi8" };
+
 	public studyAppFrame() throws IOException {
 
 		this.setBackground(backgroundColor);
@@ -87,6 +96,7 @@ class studyAppFrame extends JFrame implements ActionListener {
 		start = new JButton("STUDY");
 		stop = new JButton("Stop");
 		resume = new JButton("Resume");
+		motivation = new JButton("Motivation");
 
 		resume.setEnabled(false);
 		stop.setEnabled(false);
@@ -94,10 +104,12 @@ class studyAppFrame extends JFrame implements ActionListener {
 		resume.setForeground(textColor);
 		start.setForeground(textColor);
 		stop.setForeground(textColor);
+		motivation.setForeground(textColor);
 
 		resume.setBackground(backgroundColor);
 		stop.setBackground(backgroundColor);
 		start.setBackground(backgroundColor);
+		motivation.setForeground(backgroundColor);
 
 		JLabel label1 = new JLabel("Enter a duration(mins)");
 		JLabel label2 = new JLabel("Never, never, never give up! ");
@@ -129,6 +141,7 @@ class studyAppFrame extends JFrame implements ActionListener {
 		resume.addActionListener(this);
 		inputMins.addActionListener(this);
 		inputLabel.addActionListener(this);
+		motivation.addActionListener(this);
 
 		JPanel[] list = new JPanel[20];
 
@@ -153,6 +166,7 @@ class studyAppFrame extends JFrame implements ActionListener {
 
 		JPanel panel9 = new JPanel();
 		panel9.add(start);
+		panel9.add(motivation);
 
 		JPanel panel5 = new JPanel();
 		panel5.add(label);
@@ -230,6 +244,21 @@ class studyAppFrame extends JFrame implements ActionListener {
 			timer.stop();
 		} else if (source == resume) {
 			timer.start();
+		} else if (source == motivation) {
+
+			Random random = new Random();
+			int x = random.nextInt(7);
+
+			try {
+				java.awt.Desktop.getDesktop().browse(new URI(motivational[x]));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
 
 	}
