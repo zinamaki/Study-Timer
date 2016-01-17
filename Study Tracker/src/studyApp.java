@@ -109,7 +109,7 @@ class studyAppFrame extends JFrame implements ActionListener {
 		resume.setBackground(backgroundColor);
 		stop.setBackground(backgroundColor);
 		start.setBackground(backgroundColor);
-		motivation.setForeground(backgroundColor);
+		motivation.setBackground(backgroundColor);
 
 		JLabel label1 = new JLabel("Enter a duration(mins)");
 		JLabel label2 = new JLabel("Never, never, never give up! ");
