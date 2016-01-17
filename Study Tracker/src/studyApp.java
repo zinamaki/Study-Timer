@@ -47,11 +47,8 @@ public class studyApp {
 		// put the frame in the middle of the display
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		frame.setLocation(dim.width / 2 - frame.getSize().width / 2, dim.height / 2 - frame.getSize().height / 2);
-
 		frame.setVisible(true);
-
 	}
-
 }
 
 class studyAppFrame extends JFrame implements ActionListener {
@@ -60,27 +57,18 @@ class studyAppFrame extends JFrame implements ActionListener {
 	JButton stop;
 	JButton resume;
 	JButton motivation;
-	public static JLabel label;
-	public static Timer timer;
-	public static Font inputFont = new Font("Myriad Pro", Font.PLAIN, 32);
+
 	JTextField inputMins = new JTextField(15);
 	JTextField inputLabel = new JTextField(15);
-	public static JLabel[] history = new JLabel[10];
 
-	public static JPanel historyPanel;
-	public static JPanel panel4;
-	public static JLabel history1;
-	public static JLabel history2;
-	public static JLabel history3;
-	public static JPanel panel6;
-	public static JPanel panel7;
+	public static JLabel label;
+	public static Timer timer;
 
-	public static int currentEvent;
+	public static Font inputFont = new Font("Myriad Pro", Font.PLAIN, 32);
 
 	Color backgroundColor = new Color(37, 37, 37);
 	Color mainColor = new Color(237, 237, 237);
 	Color textColor = new Color(193, 192, 191);
-	public static BufferedWriter output;
 
 	String[] motivational = { "https://www.youtube.com/watch?v=26U_seo0a1g",
 			"https://www.youtube.com/watch?v=7iaLQZ73ujQ", "https://www.youtube.com/watch?v=UX2tefQHNmk",
@@ -91,7 +79,7 @@ class studyAppFrame extends JFrame implements ActionListener {
 
 		this.setBackground(backgroundColor);
 
-		currentEvent = 0;
+		// INITIALIZE AND CONFIGURE BUTTONS
 
 		start = new JButton("STUDY");
 		stop = new JButton("Stop");
@@ -111,6 +99,13 @@ class studyAppFrame extends JFrame implements ActionListener {
 		start.setBackground(backgroundColor);
 		motivation.setBackground(backgroundColor);
 
+		start.addActionListener(this);
+		stop.addActionListener(this);
+		resume.addActionListener(this);
+		motivation.addActionListener(this);
+
+		// INITIALIZE AND CONFIGURE LABELS, AND TEXTFIELDS
+
 		JLabel label1 = new JLabel("Enter a duration(mins)");
 		JLabel label2 = new JLabel("Never, never, never give up! ");
 		JLabel label3 = new JLabel("Session label");
@@ -125,92 +120,63 @@ class studyAppFrame extends JFrame implements ActionListener {
 		label.setFont(inputFont);
 		label.setForeground(mainColor);
 
-		history1 = new JLabel("placeholder");
-		history2 = new JLabel("placeholder");
-		history3 = new JLabel("placeholder");
-
-		history[0] = history1;
-		history[1] = history2;
-		history[2] = history3;
-
 		inputMins = new JTextField(5);
 		inputLabel = new JTextField(10);
 
-		start.addActionListener(this);
-		stop.addActionListener(this);
-		resume.addActionListener(this);
 		inputMins.addActionListener(this);
 		inputLabel.addActionListener(this);
-		motivation.addActionListener(this);
+
+		// INITIALIZE AND CONFIGURE THE PANELS
 
 		JPanel[] list = new JPanel[20];
-
-		File history = new File("history.txt");
-		output = new BufferedWriter(new FileWriter(history));
-
-		JPanel panel2 = new JPanel();
-		panel2.add(label2);
-
-		JPanel panel1 = new JPanel();
-
-		panel1.add(resume);
-		panel1.add(stop);
 
 		JPanel labelPanel = new JPanel();
 		labelPanel.add(label3);
 		labelPanel.add(inputLabel);
 
+		JPanel panel1 = new JPanel();
+		panel1.add(resume);
+		panel1.add(stop);
+
+		JPanel panel2 = new JPanel();
+		panel2.add(label2);
+
 		JPanel panel3 = new JPanel();
 		panel3.add(label1);
 		panel3.add(inputMins);
 
-		JPanel panel9 = new JPanel();
-		panel9.add(start);
-		panel9.add(motivation);
+		JPanel panel4 = new JPanel();
+		panel4.add(start);
+		panel4.add(motivation);
 
 		JPanel panel5 = new JPanel();
 		panel5.add(label);
 
-		historyPanel = new JPanel();
-
-		panel4 = new JPanel();
-		panel4.setLayout(new BoxLayout(panel4, BoxLayout.PAGE_AXIS));
-		// panel4.add(panel2);
-		panel4.add(labelPanel);
-		panel4.add(panel3);
-		panel4.add(panel9);
-		panel4.add(panel5);
-		panel4.add(panel1);
-
-		panel7 = new JPanel();
-		panel7.setLayout(new BoxLayout(panel7, BoxLayout.PAGE_AXIS));
-		// panel7.add(historyTitle);
-		panel7.add(historyPanel);
-
-		panel6 = new JPanel();
+		JPanel panel6 = new JPanel();
+		panel6.setLayout(new BoxLayout(panel6, BoxLayout.PAGE_AXIS));
+		panel6.add(labelPanel);
+		panel6.add(panel3);
 		panel6.add(panel4);
-		panel6.add(panel7);
+		panel6.add(panel5);
+		panel6.add(panel1);
 
 		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS));
 		mainPanel.add(panel2);
 		mainPanel.add(panel6);
 
-		mainPanel.setBackground(backgroundColor);
+		// SET THE BACKGROUND COLOR OF ALL THE PANELS
 
-		list[0] = panel2;
-		list[1] = panel3;
-		list[2] = panel4;
-		list[3] = panel5;
-		list[4] = panel6;
-		list[5] = panel7;
-		list[6] = historyPanel;
-		list[7] = mainPanel;
-		list[8] = labelPanel;
-		list[9] = panel1;
-		list[10] = panel9;
+		list[0] = panel1;
+		list[1] = panel2;
+		list[2] = panel3;
+		list[3] = panel4;
+		list[4] = panel5;
+		list[5] = panel6;
+		list[6] = mainPanel;
+		list[7] = labelPanel;
 
-		for (int i = 0; i < 11; i++) {
+		for (int i = 0; i < 8; i++) {
 			list[i].setBackground(backgroundColor);
 		}
 
@@ -251,10 +217,7 @@ class studyAppFrame extends JFrame implements ActionListener {
 
 			try {
 				java.awt.Desktop.getDesktop().browse(new URI(motivational[x]));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (URISyntaxException e) {
+			} catch (IOException | URISyntaxException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -311,14 +274,8 @@ class TimerListener implements ActionListener {
 			if (remainingMinutes == 0) {
 				studyAppFrame.timer.stop();
 				playSound();
-				JPanel newSession = new JPanel();
-				Date finishDate = new Date();
-				JLabel mostRecent = new JLabel();
-				newSession.add(mostRecent);
 
-				// studyAppFrame.panel7.add(newSession);
-				studyAppFrame.panel7.revalidate();
-				studyAppFrame.panel7.repaint();
+				Date finishDate = new Date();
 
 				try {
 					String content = sessionLabel + " for " + String.valueOf(startingMinutes) + " minute(s) from "
@@ -343,22 +300,10 @@ class TimerListener implements ActionListener {
 					// Closing BufferedWriter Stream
 					bw.close();
 
-					System.out.println("Data successfully appended at the end of file");
-
 				} catch (IOException ioe) {
 					System.out.println("Exception occurred:");
 					ioe.printStackTrace();
 				}
-
-				// try(PrintWriter out = new PrintWriter(new BufferedWriter(new
-				// FileWriter("history.txt", true)))) {
-				// out.println(sessionLabel + " for " +
-				// String.valueOf(startingMinutes)+ " minute(s) from " +
-				// startingTime + " to " + dateFormat.format(finishDate));
-
-				// }catch (IOException e) {
-
-				// }
 
 			} else {
 				remainingMinutes--;
