@@ -82,7 +82,7 @@ class studyAppFrame extends JFrame implements ActionListener {
 		// INITIALIZE AND CONFIGURE BUTTONS
 
 		start = new JButton("STUDY");
-		stop = new JButton("Stop");
+		stop = new JButton("Pause");
 		resume = new JButton("Resume");
 		motivation = new JButton("Motivation");
 
