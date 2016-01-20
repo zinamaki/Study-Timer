@@ -73,7 +73,9 @@ class studyAppFrame extends JFrame implements ActionListener {
 	String[] motivational = { "https://www.youtube.com/watch?v=26U_seo0a1g",
 			"https://www.youtube.com/watch?v=7iaLQZ73ujQ", "https://www.youtube.com/watch?v=UX2tefQHNmk",
 			"https://www.youtube.com/watch?v=UNQhuFL6CWg", "https://www.youtube.com/watch?v=W_VQbtO3ChM",
-			"https://www.youtube.com/watch?v=AjZ0KbJcav0", "https://www.youtube.com/watch?v=wzhzkKccBi8" };
+			"https://www.youtube.com/watch?v=AjZ0KbJcav0", "https://www.youtube.com/watch?v=wzhzkKccBi8",
+			"https://youtu.be/RQRfnexHJmk", "https://youtu.be/U3Iohi17MeU", "https://youtu.be/4OI-AbOSw4M",
+			"https://youtu.be/yB6z-nVcezc", "https://www.youtube.com/watch?v=bYMUb4uQZoo" };
 
 	public studyAppFrame() throws IOException {
 
@@ -213,7 +215,7 @@ class studyAppFrame extends JFrame implements ActionListener {
 		} else if (source == motivation) {
 
 			Random random = new Random();
-			int x = random.nextInt(7);
+			int x = random.nextInt(12);
 
 			try {
 				java.awt.Desktop.getDesktop().browse(new URI(motivational[x]));
